@@ -67,23 +67,23 @@ const SuvanaApp: React.FC = () => {
 
   if (!isWalletConnected) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="max-w-md w-full mx-auto p-6">
-          <div className="text-center mb-8">
-            <img src={suvanaLogo} alt="Suvana Logo" className="w-16 h-16 mx-auto mb-4" />
-            <h1 className="text-2xl font-bold text-foreground mb-2">Welcome to Suvana</h1>
-            <p className="text-muted-foreground">Connect your Sui wallet to start managing your Ajo pools</p>
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <div className="max-w-md w-full mx-auto p-4 sm:p-6">
+          <div className="text-center mb-6 sm:mb-8">
+            <img src={suvanaLogo} alt="Suvana Logo" className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-4" />
+            <h1 className="text-xl sm:text-2xl font-bold text-foreground mb-2">Welcome to Suvana</h1>
+            <p className="text-sm sm:text-base text-muted-foreground">Connect your Sui wallet to start managing your Ajo pools</p>
           </div>
           
           <Card className="ajo-card">
             <CardContent className="pt-6">
               <div className="text-center space-y-4">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                  <Shield className="w-8 h-8 text-primary" />
+                <div className="w-14 h-14 sm:w-16 sm:h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
+                  <Shield className="w-6 h-6 sm:w-8 sm:h-8 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-2">Secure Wallet Connection</h3>
-                  <p className="text-sm text-muted-foreground mb-4">
+                  <h3 className="text-base sm:text-lg font-semibold mb-2">Secure Wallet Connection</h3>
+                  <p className="text-xs sm:text-sm text-muted-foreground mb-4">
                     Connect your Sui wallet to access your Ajo pools and manage your savings
                   </p>
                 </div>
@@ -100,33 +100,33 @@ const SuvanaApp: React.FC = () => {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-3 sm:px-4 py-3 sm:py-4">
           <div className="flex justify-between items-center">
-            <div className="flex items-center gap-3">
-              <a href="/" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
-                <ArrowLeft className="w-4 h-4" />
-                <span className="text-sm">Back to Home</span>
+            <div className="flex items-center gap-2 sm:gap-3">
+              <a href="/" className="flex items-center gap-1 sm:gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                <ArrowLeft className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm hidden sm:inline">Back to Home</span>
               </a>
-              <div className="w-px h-6 bg-border" />
-              <img src={suvanaLogo} alt="Suvana Logo" className="w-8 h-8" />
-              <span className="font-semibold text-lg">Suvana App</span>
+              <div className="w-px h-4 sm:h-6 bg-border" />
+              <img src={suvanaLogo} alt="Suvana Logo" className="w-6 h-6 sm:w-8 sm:h-8" />
+              <span className="font-semibold text-sm sm:text-lg">Suvana App</span>
             </div>
             <ConnectButton />
           </div>
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-8 space-y-8">
+      <main className="container mx-auto px-3 sm:px-4 py-6 sm:py-8 space-y-6 sm:space-y-8">
         {/* Welcome Section */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-foreground mb-2">Your Ajo Dashboard</h1>
-          <p className="text-muted-foreground">Manage your savings pools and track your contributions</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">Your Ajo Dashboard</h1>
+          <p className="text-sm sm:text-base text-muted-foreground">Manage your savings pools and track your contributions</p>
         </div>
 
         {/* User Dashboard */}
         {userPool && (
           <section>
-            <h2 className="text-2xl font-bold mb-6">My Active Pool</h2>
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">My Active Pool</h2>
             <UserDashboard 
               userPool={userPool} 
               onContribute={handleContribute}
@@ -137,20 +137,21 @@ const SuvanaApp: React.FC = () => {
 
         {/* Available Pools Section */}
         <section>
-          <div className="flex justify-between items-center mb-6">
-            <h2 className="text-2xl font-bold">Available Pools</h2>
-            <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 sm:gap-0 mb-4 sm:mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold">Available Pools</h2>
+            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <CreatePoolModal onPoolCreated={handlePoolCreated} />
               <Button 
                 variant="outline" 
                 onClick={() => setShowAllPools(!showAllPools)}
+                className="w-full sm:w-auto"
               >
                 {showAllPools ? 'Show Less' : 'Show All'}
               </Button>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {displayedPools.map((pool) => (
               <PoolCard
                 key={pool.id}
@@ -176,8 +177,8 @@ const SuvanaApp: React.FC = () => {
 
         {/* Stats Section */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">Platform Statistics</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">Platform Statistics</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <Card className="ajo-card">
               <CardContent className="pt-6">
                 <div className="flex items-center gap-3">
