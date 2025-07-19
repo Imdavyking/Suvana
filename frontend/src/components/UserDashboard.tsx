@@ -73,23 +73,23 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ userPool, onContribute, w
           </div>
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <Coins className="w-6 h-6 text-primary mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground">Share Amount</p>
-              <p className="text-lg font-bold text-primary">{userPool.shareAmount} SUI</p>
+              <Coins className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Share Amount</p>
+              <p className="text-base sm:text-lg font-bold text-primary">{userPool.shareAmount} SUI</p>
             </div>
             
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <Users className="w-6 h-6 text-primary mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground">Members</p>
-              <p className="text-lg font-bold">{userPool.participants}/{userPool.size}</p>
+              <Users className="w-5 h-5 sm:w-6 sm:h-6 text-primary mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Members</p>
+              <p className="text-base sm:text-lg font-bold">{userPool.participants}/{userPool.size}</p>
             </div>
             
             <div className="text-center p-3 bg-muted/50 rounded-lg">
-              <TrendingUp className="w-6 h-6 text-success mx-auto mb-2" />
-              <p className="text-sm text-muted-foreground">Total Payout</p>
-              <p className="text-lg font-bold text-success">{userPool.size * userPool.shareAmount} SUI</p>
+              <TrendingUp className="w-5 h-5 sm:w-6 sm:h-6 text-success mx-auto mb-2" />
+              <p className="text-xs sm:text-sm text-muted-foreground">Total Payout</p>
+              <p className="text-base sm:text-lg font-bold text-success">{userPool.size * userPool.shareAmount} SUI</p>
             </div>
           </div>
 
@@ -103,11 +103,11 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ userPool, onContribute, w
         </CardContent>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
         <Card className={`ajo-card ${isContributionDue ? 'ring-2 ring-warning/50' : ''}`}>
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Clock className="w-5 h-5 text-primary" />
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
               Next Contribution
             </CardTitle>
           </CardHeader>
@@ -137,8 +137,8 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ userPool, onContribute, w
 
         <Card className="ajo-card">
           <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <Calendar className="w-5 h-5 text-success" />
+            <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+              <Calendar className="w-4 h-4 sm:w-5 sm:h-5 text-success" />
               Your Payout
             </CardTitle>
           </CardHeader>
@@ -171,7 +171,7 @@ const UserDashboard: React.FC<UserDashboardProps> = ({ userPool, onContribute, w
           <CardTitle className="text-lg">Pool Statistics</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
             <div>
               <p className="text-2xl font-bold text-primary">{userPool.collected}</p>
               <p className="text-sm text-muted-foreground">SUI Collected</p>

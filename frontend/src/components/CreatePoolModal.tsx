@@ -56,14 +56,14 @@ const CreatePoolModal: React.FC<CreatePoolModalProps> = ({ onPoolCreated }) => {
           Create Ajo Pool
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-md ajo-pattern relative">
+      <DialogContent className="sm:max-w-md ajo-pattern relative mx-4">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-bold text-primary">
+          <DialogTitle className="text-center text-lg sm:text-xl font-bold text-primary">
             Create New Ajo Pool
           </DialogTitle>
         </DialogHeader>
         
-        <div className="space-y-6 py-4">
+        <div className="space-y-4 sm:space-y-6 py-4">
           <div className="space-y-2">
             <Label htmlFor="poolSize" className="flex items-center gap-2 font-medium">
               <Users className="w-4 h-4 text-primary" />
