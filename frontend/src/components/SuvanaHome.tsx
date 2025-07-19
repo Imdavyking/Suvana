@@ -4,7 +4,6 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Twitter, Users, TrendingUp, Shield, Zap } from 'lucide-react';
 import heroImage from '@/assets/hero.png';
-import suiLogo from '@/assets/sui-logo.png';
 import suvanaLogo from '@/assets/suvana-logo.png';
 
 
@@ -37,10 +36,10 @@ const SuvanaHome: React.FC = () => {
           <div className="relative z-10 text-center w-full flex flex-col items-center justify-center">
             <img
               src={suvanaLogo}
-              alt="Sui Logo"
-              className="w-20 h-20 mb-6 animate-sui-logo"
+              alt="Suvana Logo"
+              className="w-20 h-20 mb-6 animate-logo"
               style={{
-                animation: 'suiLogoPopIn 1.2s cubic-bezier(0.23, 1, 0.32, 1)'
+                animation: 'logoPopIn 1.2s cubic-bezier(0.23, 1, 0.32, 1)'
               }}
             />
             <h1

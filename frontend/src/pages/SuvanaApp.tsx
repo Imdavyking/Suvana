@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import WalletConnection from '@/components/WalletConnection';
+import { ConnectButton, useCurrentWallet } from '@mysten/dapp-kit';
 import CreatePoolModal from '@/components/CreatePoolModal';
 import PoolCard from '@/components/PoolCard';
 import UserDashboard from '@/components/UserDashboard';
@@ -12,23 +12,23 @@ import { Plus, Users, TrendingUp, Shield, Zap, ArrowLeft } from 'lucide-react';
 import suvanaLogo from '@/assets/suvana-logo.png';
 
 const SuvanaApp: React.FC = () => {
-  const [isWalletConnected, setIsWalletConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState('');
+  const currentWallet = useCurrentWallet();
   const [availablePools, setAvailablePools] = useState(samplePools);
   const [userPool, setUserPool] = useState<any>(null);
   const [showAllPools, setShowAllPools] = useState(false);
   const { toast } = useToast();
 
-  const handleWalletConnection = (connected: boolean, address?: string) => {
-    setIsWalletConnected(connected);
-    setWalletAddress(address || '');
-    
-    if (connected) {
+  const isWalletConnected = currentWallet?.isConnected || false;
+  const walletAddress = currentWallet?.currentWallet?.accounts?.[0]?.address || '';
+
+  // Set user pool when wallet connects
+  React.useEffect(() => {
+    if (isWalletConnected && !userPool) {
       setUserPool(userSamplePool);
-    } else {
+    } else if (!isWalletConnected) {
       setUserPool(null);
     }
-  };
+  }, [isWalletConnected, userPool]);
 
   const handlePoolCreated = (newPool: any) => {
     setAvailablePools(prev => [newPool, ...prev]);
@@ -87,7 +87,7 @@ const SuvanaApp: React.FC = () => {
                     Connect your Sui wallet to access your Ajo pools and manage your savings
                   </p>
                 </div>
-                <WalletConnection onConnectionChange={handleWalletConnection} />
+                <ConnectButton />
               </div>
             </CardContent>
           </Card>
@@ -111,7 +111,7 @@ const SuvanaApp: React.FC = () => {
               <img src={suvanaLogo} alt="Suvana Logo" className="w-8 h-8" />
               <span className="font-semibold text-lg">Suvana App</span>
             </div>
-            <WalletConnection onConnectionChange={handleWalletConnection} />
+            <ConnectButton />
           </div>
         </div>
       </header>
